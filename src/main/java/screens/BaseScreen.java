@@ -8,8 +8,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 
-
-
 public class BaseScreen {
 
     AppiumDriver<AndroidElement> driver;
@@ -26,16 +24,15 @@ public class BaseScreen {
         if (text != null) {
             element.sendKeys(text);
         }
-
         driver.hideKeyboard();
     }
 
-    public boolean isShouldHave(AndroidElement element,String text, int time){
-        return new WebDriverWait(driver,time).until(ExpectedConditions.textToBePresentInElement(element,text));
+    public boolean isShouldHave(AndroidElement element, String text, int time) {
+        return new WebDriverWait(driver, time).until(ExpectedConditions.textToBePresentInElement(element, text));
     }
 
 
-    public void pause(int time){
+    public void pause(int time) {
         try {
             Thread.sleep(time);
         } catch (InterruptedException e) {
@@ -43,10 +40,9 @@ public class BaseScreen {
         }
     }
 
-    public void should(AndroidElement element, int time){
-        new WebDriverWait(driver,time).until(ExpectedConditions.visibilityOf(element));
+    public void should(AndroidElement element, int time) {
+        new WebDriverWait(driver, time).until(ExpectedConditions.visibilityOf(element));
     }
-
 
 
 }
