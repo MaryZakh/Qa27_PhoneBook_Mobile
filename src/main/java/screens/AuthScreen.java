@@ -58,12 +58,7 @@ public class AuthScreen extends BaseScreen {
     }
 
     public AuthScreen isErrorMessageContainsText(String text) {
-        Alert alert = new WebDriverWait(driver,10)
-                .until(ExpectedConditions.alertIsPresent());
-        driver.switchTo().alert();
-        Assert.assertTrue(alert.getText().contains(text));
-        alert.accept();
-
+        checkAlertText(text);
         return this;
     }
 }

@@ -48,12 +48,14 @@ public class ContactListScreen extends BaseScreen {
     }
 
     public AddNewContactScreen openContactForm(){
+        if (activityTextView.getText().equals("Contact list"))
         plusBtn.click();
         return new AddNewContactScreen(driver);
     }
 
     public ContactListScreen isContactAddedByName(String name, String lastName) {
         isShouldHave(activityTextView,"Contact list",5);
+        System.out.println("size of list"+contactNameList.size());
         boolean isPresent = false;
 
         for (AndroidElement element:contactNameList)
