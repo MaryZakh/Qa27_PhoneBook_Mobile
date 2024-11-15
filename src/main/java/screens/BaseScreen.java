@@ -9,6 +9,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import java.util.List;
+
 
 public class BaseScreen {
 
@@ -54,5 +56,17 @@ public class BaseScreen {
         alert.accept();
     }
 
+    public boolean isElementDisplayed(AndroidElement element) {
+        try {
+            should(element,5);
+            return element.isDisplayed();
+        }catch (IllegalAccessError e){
+            return false;
+        }
+    }
+
+    public boolean isElementPresentInList(List<AndroidElement> list) {
+        return list.size()>0;
+    }
 
 }
