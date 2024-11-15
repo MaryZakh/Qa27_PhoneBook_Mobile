@@ -25,4 +25,11 @@ public class DeleteContactTests extends AppiumConfig {
     }
 
 
+    @Test
+    public void removeAllContactsSuccess(){
+        new ContactListScreen(driver)
+                .removeAllContacts()
+                .isNoContactsHere();
+    }
+
 }

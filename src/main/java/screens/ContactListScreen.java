@@ -40,6 +40,9 @@ public class ContactListScreen extends BaseScreen {
     @FindBy(id = "android:id/button1")
     AndroidElement yesBtn;
 
+    @FindBy(id = "com.sheygam.contactapp:id/emptyTxt")
+    AndroidElement noContactHereTextView;
+
     int countBefore;
     int countAfter;
 
@@ -127,5 +130,17 @@ public class ContactListScreen extends BaseScreen {
     public ContactListScreen isListSizeLessOnOne() {
         Assert.assertEquals(countBefore - countAfter, 1);
         return this;
+    }
+
+    public ContactListScreen removeAllContacts() {
+        pause(1000);
+        while (contactList.size() > 0) {
+            deleteFirstContact();
+        }
+        return this;
+    }
+
+    public void isNoContactsHere() {
+        isShouldHave(noContactHereTextView,"No Contacts. Add One more!",10);
     }
 }
